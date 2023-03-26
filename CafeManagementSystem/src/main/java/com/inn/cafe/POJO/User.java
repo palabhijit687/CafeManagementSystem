@@ -10,15 +10,26 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.NamedQuery;
 import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
+
+@NamedQuery(name="User.findByEmailId", query = "SELECT u from User u WHERE u.email=:email")
 
 @Data
 @Entity
 @DynamicUpdate
 @DynamicInsert
+@Getter
+@Setter
+@ToString
 @Table(name = "user")
 public class User implements Serializable {
+
 	private static final long serialVersionUID = 1L;
 
 	@Id
